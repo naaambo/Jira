@@ -16,10 +16,16 @@ namespace JIRA
 			public string Expand { get; set; }
 			public double ID { get; set; }
 			public string Self { get; set; }
+			public Fields MyFields { get; set; }
 
+			public Issue()
+			{
+				MyFields = new Fields();
+			}
+			//TODO: Get access to Fields:Description
 			public class Fields
 			{
-				public string description { get; set; }
+				public string Description { get; set; }
 			}
 		}
 
@@ -44,7 +50,7 @@ namespace JIRA
 					HttpResponseMessage response = await client.GetAsync("api/2/issue/BPC-1908");
 					Issue issue = await response.Content.ReadAsAsync<Issue>();
 					Console.WriteLine(response+"\n\n\n\n");
-					Console.WriteLine("{0}\n{1}\n", issue.ID, issue.Self);
+					Console.WriteLine("{0}\n{1}\n{2}", issue.ID, issue.Self, issue.MyFields.Description);
 					response.EnsureSuccessStatusCode();
 				}
 				catch(HttpRequestException e)

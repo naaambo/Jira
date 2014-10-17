@@ -1,0 +1,10 @@
+D:\JIRA\JIRA\JIRA\bin\Debug\JIRA.exe.config
+D:\JIRA\JIRA\JIRA\bin\Debug\JIRA.exe
+D:\JIRA\JIRA\JIRA\bin\Debug\JIRA.pdb
+D:\JIRA\JIRA\JIRA\bin\Debug\Newtonsoft.Json.dll
+D:\JIRA\JIRA\JIRA\bin\Debug\System.Net.Http.Formatting.dll
+D:\JIRA\JIRA\JIRA\bin\Debug\Newtonsoft.Json.xml
+D:\JIRA\JIRA\JIRA\bin\Debug\System.Net.Http.Formatting.xml
+D:\JIRA\JIRA\JIRA\obj\Debug\JIRA.csprojResolveAssemblyReference.cache
+D:\JIRA\JIRA\JIRA\obj\Debug\JIRA.exe
+D:\JIRA\JIRA\JIRA\obj\Debug\JIRA.pdb

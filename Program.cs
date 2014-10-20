@@ -6,34 +6,19 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace JIRA
 {
 	class Program
 	{
-		public class Issue
-		{
-			public string Expand { get; set; }
-			public double ID { get; set; }
-			public string Self { get; set; }
-			public Fields MyFields { get; set; }
-
-			public Issue()
-			{
-				MyFields = new Fields();
-			}
-			//TODO: Get access to Fields:Description
-			public class Fields
-			{
-				public string Description { get; set; }
-			}
-		}
 
 		static void Main(string[] args)
 		{
 			RunASync().Wait();
 			Console.ReadKey();
 		}
+
 
 		static async Task RunASync()
 		{
@@ -47,10 +32,15 @@ namespace JIRA
 
 				try
 				{
-					HttpResponseMessage response = await client.GetAsync("api/2/issue/BPC-1908");
-					Issue issue = await response.Content.ReadAsAsync<Issue>();
+					Console.WriteLine("Enter Your Issue Number e.g 1908");
+					var key = Console.ReadLine();
+
+					HttpResponseMessage response = await client.GetAsync("api/2/issue/BPC-" + key);
+					var result = response.Content.ReadAsStringAsync().Result;
+					Issue issue = JsonConvert.DeserializeObject<Issue>(result);
+
 					Console.WriteLine(response+"\n\n\n\n");
-					Console.WriteLine("{0}\n{1}\n{2}", issue.ID, issue.Self, issue.MyFields.Description);
+					Console.WriteLine("API-Link:{0}\n\nIssue:{1}\n\nDescription: \n{2}", issue.Self, issue.Key, issue.MyFields.Description);
 					response.EnsureSuccessStatusCode();
 				}
 				catch(HttpRequestException e)

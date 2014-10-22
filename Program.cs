@@ -53,7 +53,7 @@ namespace JIRA
 
 		static public string BasicEncode()
 		{
-			var bytes = Encoding.UTF8.GetBytes("sam.jones@icsasoftware.com:Jira2014");
+			var bytes = Encoding.UTF8.GetBytes("Username:Password");
 			var base64 = Convert.ToBase64String(bytes);
 			return base64;
 
